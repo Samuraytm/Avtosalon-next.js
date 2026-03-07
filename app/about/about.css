@@ -1,0 +1,315 @@
+/* app/about/about.css */
+
+/* Общие стили */
+.about-page-main {
+    font-family: 'Inter', 'system-ui', sans-serif;
+    background: #0d0d0d;
+    color: #ffffff;
+  }
+  
+  /* 1. Герой-секция */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Строго во весь экран */
+    display: flex;
+    align-items: center; /* Центрирование заголовка по вертикали */
+    justify-content: center; /* Центрирование заголовка по горизонтали */
+    overflow: hidden;
+  }
+  
+  .hero-bg-image {
+    object-fit: cover;
+    filter: brightness(0.3); /* Затемнение как на макете */
+    z-index: 0;
+  }
+  
+  /* Хлебные крошки — фиксируем слева сверху */
+  .breadcrumbs-top {
+    position: absolute;
+    top: 60px; /* Отступ сверху по макету */
+    left: 20px; /* Базовый отступ для мобильных */
+    z-index: 30;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: white; /* gray-500 */
+  }
+  
+  @media (min-width: 1024px) {
+    .breadcrumbs-top {
+      left: 100px; /* Отступ слева для десктопа ~80-120px */
+    }
+  }
+  
+  /* Контент заголовка */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    text-align: center; /* Текст по центру */
+  }
+  
+  .main-title {
+    color: #ffffff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    /* Резиновый размер: от 3rem на мобилках до 9rem на 4K */
+    font-size: clamp(3rem, 10vw, 9rem); 
+    /* Мягкое свечение (glow) */
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 
+                 0 10px 50px white;
+  }
+  @media (min-width: 640px) { .main-title { font-size: 5.5rem; } }
+  @media (min-width: 768px) { .main-title { font-size: 6.5rem; } }
+  @media (min-width: 1024px) { .main-title { font-size: 8rem; } }
+  @media (min-width: 1280px) { .main-title { font-size: 9rem; } }
+  
+  /* 2. Почему мы? */
+  .why-us-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  @media (min-width: 768px) {
+    .why-us-section { padding-top: 8rem; padding-bottom: 8rem; }
+  }
+  @media (min-width: 1024px) {
+    .why-us-section { padding-top: 10rem; padding-bottom: 10rem; }
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    letter-spacing: -0.025em;
+    text-align: center;
+    color: white;
+  }
+  
+  @media (min-width: 768px) { .section-title { font-size: 4rem; } }
+  @media (min-width: 1024px) { .section-title { font-size: 5rem; } }
+  
+  .description-text {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #d1d5db; /* gray-300 */
+    max-width: 64rem;
+    margin: 0 auto 4rem;
+    opacity: 0.9;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .description-text { text-align: left; margin-left: 0; }
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4rem;
+    }
+  }
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: white;
+  }
+  
+  @media (min-width: 768px) { .stat-value { font-size: 7rem; } }
+  @media (min-width: 1024px) { .stat-value { font-size: 9rem; } }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #6b7280; /* gray-500 */
+    font-weight: 500;
+  }
+  
+  /* 3. Наша миссия */
+  /* Общая секция с градиентом */
+.mission-section {
+    background: radial-gradient(circle at 0% 50%, #151515 0%, #0a0a0a 100%);
+    padding: 120px 0;
+    overflow: hidden; /* Чтобы наклоненные фото не давали прокрутку */
+  }
+  
+  /* Сетка с большим воздухом */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr 1.1fr; /* Текст чуть уже визуальной части */
+      gap: 120px;
+    }
+  }
+  
+  /* Стили текста */
+  .mission-main-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+  
+  .mission-p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+  }
+  
+  .mission-p.highlight {
+    color: #ffffff;
+    font-weight: 500;
+  }
+  
+  /* Линия */
+  .mission-divider {
+    border: none;
+    border-top: 1px solid rgba(217, 169, 98, 0.3); /* Золотистая прозрачная линия */
+    margin: 40px 0;
+    width: 100px; /* Короткая линия как в премиум дизайне */
+  }
+  
+  /* ВИЗУАЛЬНЫЙ БЛОК С КАРТИНКАМИ */
+  .mission-visual-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mission-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+  }
+  
+  .mission-img-card {
+    position: absolute;
+    width: 70%;
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Эффект наклона и перекрытия */
+  .card-left {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transform: rotate(-6deg) skewX(2deg);
+  }
+  
+  .card-right {
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    transform: rotate(4deg) skewX(-1deg);
+    filter: brightness(0.8); /* Чуть темнее для глубины */
+  }
+  
+  .mission-image {
+    object-fit: cover;
+    /* Компенсируем наклон контейнера, чтобы само фото не казалось кривым */
+    transform: scale(1.1); 
+  }
+  
+  /* Адаптив для мобилок */
+  @media (max-width: 768px) {
+    .mission-section {
+      padding: 60px 0;
+    }
+    
+    .mission-image-container {
+      height: 350px;
+      max-width: 100%;
+    }
+  
+    .mission-img-card {
+      width: 65%;
+      transform: rotate(0) skewX(0); /* Убираем сильный наклон на мобильных */
+    }
+    
+    .card-left { top: 10%; left: 5%; }
+    .card-right { bottom: 10%; right: 5%; }
+  
+    .mission-divider {
+      width: 100%; /* На мобильном линия на всю ширину */
+    }
+  }
+  
+  /* 4. Видео */
+  .video-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  @media (min-width: 768px) {
+    .video-section { padding-top: 8rem; padding-bottom: 8rem; }
+  }
+  
+  .video-container {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .video-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Контейнеры */
+  .container-custom {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
