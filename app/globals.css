@@ -1,5 +1,32 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 120px;
+  padding-right: 120px;
+  box-sizing: border-box;
+  padding-top: 15px;
+}
+body,
+html {
+  background: #2f2f2f;
+}
+
+html,
+body {
+  height: 100vh !important;
+}
+
+.image-wrapper {
+  height: 300px !important;
+}
+.even-row-reverse:nth-child(even) {
+  flex-direction: row-reverse;
+  margin-top: 150px !important;
+}
 @layer utilities {
     @keyframes float {
       0%, 100% {
