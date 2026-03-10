@@ -1,6 +1,7 @@
 'use client';
 import { FaChevronDown } from 'react-icons/fa';
 import Button from '../UI/Button';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
   const scrollToContent = () => {
@@ -15,9 +16,10 @@ export default function Hero() {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+  const { t } = useTranslation();
 
   return (
- 
+
     <section className="relative h-screen w-full overflow-hidden bg-black">
       {/* Фоновое изображение из папки public */}
       <div 

@@ -18,7 +18,7 @@ export default function Footer() {
           <Link href="/news" className="hover:text-white transition-colors">Блог</Link>
           <Link href="/about" className="hover:text-white transition-colors">О нас</Link>
           <Link href="/service" className="hover:text-white transition-colors">Сервис</Link>
-          <Link href="/contacts" className="hover:text-white transition-colors">Связаться с нами</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">Связаться с нами</Link>
         </nav>
         
         <div className="mt-8 text-[10px] text-gray-600 uppercase">

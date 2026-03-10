@@ -3,7 +3,7 @@
 import Contacts from "../components/Contacts/contacts"
 import Link from "next/link"
 import { useState } from "react"
-import Map from "../components/Map/Map";
+
 
 function Page() {
   const [isHovered, setIsHovered] = useState(false);
@@ -67,7 +67,6 @@ function Page() {
         </Link>
 
         <Contacts />
-        <Map />
     </div>
   )
 }
