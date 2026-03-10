@@ -1,146 +1,66 @@
 "use client";
 import { useParams } from "next/navigation";
-import Link from "next/link";
-import ReversedRow from "@/app/components/ReversedRow";
 import Image from "next/image";
-const cars = [
-  {
-    id: 1,
-    name: "Volkswagen ID.6",
-    price: "50.000",
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-  {
-    id: 2,
-    name: "Volkswagen ID.6",
-    price: null,
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-  {
-    id: 3,
-    name: "Volkswagen ID.6",
-    price: null,
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-  {
-    id: 4,
-    name: "Volkswagen ID.6",
-    price: "50.000",
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-  {
-    id: 5,
-    name: "Volkswagen ID.6",
-    price: null,
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-  {
-    id: 6,
-    name: "Volkswagen ID.6",
-    price: null,
-    acceleration: "4.2",
-    range: "455",
-    power: "574",
-  },
-];
+import Link from "next/link";
+import { cars } from "@/app/data";
 
-function CarDetails() {
-  const params = useParams();
-  const { id } = params;
+export default function CarDetailPage() {
+  const { id } = useParams();
+  const car = cars.find(c => c.id === Number(id));
 
-  const car = cars.find((car) => car.id === parseInt(id));
+  if (!car) return <div className="text-white text-center py-40">Машина не найдена</div>;
 
-  if (!car) {
-    return <div className="text-white">Car not found</div>;
-  }
+  const specs = [
+    { label: "Макс. скорость", value: `${car.speed} км/ч` },
+    { label: "Разгон до 100", value: `${car.acceleration} с` },
+    { label: "Привод", value: car.drive },
+    { label: "Двигатель", value: car.type },
+    { label: "Запас хода", value: `${car.range} км` },
+    { label: "Вес", value: `${car.weight} кг` },
+  ];
 
   return (
-    <div>
-      <div
-        className="relative bg-cover bg-center bg-no-repeat h-screen"
-        style={{ backgroundImage: "url('/Rectangle 37 (1).svg')" }}
-      >
-        <div className="container mx-auto text-white py-16 flex flex-col justify-center h-full">
-          <h1 className="text-5xl font-bold mb-6">{car.name}</h1>
-          <p className="text-2xl mb-4">
-            Премиум электрокар стиль и удобство в одной машине
-          </p>
-          <div className="flex space-x-8 text-lg">
-            <p>POWER (CV): {car.power}</p>
-            <p>MAX SPEED: {car.range} km/h</p>
-            <p>0-100 km/h: {car.acceleration} s</p>
-          </div>
-        </div>
-      </div>
+    <main className="min-h-screen bg-[#0d0d0d] text-white pt-32 pb-20">
+      <div className="container mx-auto px-4">
+        <Link href="/catalog" className="text-[#D9A962] uppercase text-xs tracking-widest mb-10 inline-block hover:opacity-70">
+          ← Назад в каталог
+        </Link>
 
-      <div className=" py-16">
-        <div className="container mx-auto text-white">
-          <ReversedRow
-            title={"Обзор"}
-            description={
-              "Последовательно продолжая концепцию заднего расположения двигателя, лежащую в основе всех моделей семейства Aventador, версия Ultimae отражает её новое прочтение. Внешний вид отличается чистыми и сдержанными линиями, конструкция — широким использованием углепластика."
-            }
-            imageUrl1="/Mask group (1).svg"
-            imageUrl2="/Mask group (2).svg"
-          />
-          <ReversedRow
-            title={"Экстерьер"}
-            description={
-              "Последовательно продолжая концепцию заднего расположения двигателя, лежащую в основе всех моделей семейства Aventador, версия Ultimae отражает её новое прочтение. Внешний вид отличается чистыми и сдержанными линиями, а конструкция – широким использованием углепластика."
-            }
-            imageUrl1="/Mask group (1).svg"
-            imageUrl2="/Mask group (2).svg"
-          />
-          <div className="mt-16">
-            <ReversedRow
-              title={"Интерьер"}
-              description={
-                "Последовательно продолжая концепцию заднего расположения двигателя, лежащую в основе всех моделей семейства Aventador, версия Ultimae отражает её новое прочтение. Внешний вид отличается чистыми и сдержанными линиями, конструкция — широким использованием углепластика."
-              }
-              imageUrl1="/Mask group (1).svg"
-              imageUrl2="/Mask group (2).svg"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Лево: Изображение */}
+          <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10">
+            <Image 
+              src={car.image} 
+              alt={car.model} 
+              fill 
+              className="object-cover"
+              priority
             />
           </div>
-        </div>
-      </div>
 
-      <div className="py-16">
-        <div className="container mx-auto text-white">
-          <h2 className="text-4xl font-bold text-center mb-8">
-            Технические характеристики
-          </h2>
-          <div className="grid grid-cols-1 divide-y divide-gray-400">
-            {Array(7)
-              .fill(null)
-              .map((_, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-center py-4"
-                >
-                  <span>Рабочий объем</span>
-                  <span>6.498 см3 (396,5 куб.дюйм.)</span>
+          {/* Право: Инфо */}
+          <div>
+            <h1 className="text-5xl font-bold mb-4 uppercase">{car.brand}</h1>
+            <h2 className="text-3xl text-white/60 mb-6 font-light">{car.model}</h2>
+            <div className="inline-block px-4 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-[#D9A962] mb-8">
+              Идеально для: {car.bestFor}
+            </div>
+
+            <div className="grid grid-cols-2 gap-y-8 gap-x-12">
+              {specs.map((spec, i) => (
+                <div key={i} className="border-b border-white/5 pb-4">
+                  <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">{spec.label}</p>
+                  <p className="text-xl font-medium">{spec.value}</p>
                 </div>
               ))}
-          </div>
-          <div className="text-center mt-8 flex justify-center">
-            <button className="bg-gray-800 text-white py-2 px-6 rounded-lg flex items-center justify-center gap-2 cursor-pointer">
-              Узнать больше
+            </div>
+
+            <button className="w-full mt-12 py-5 bg-[#D9A962] text-black font-bold uppercase tracking-widest rounded-xl hover:bg-[#b88f52] transition-all">
+              Запросить предложение — {car.price.toLocaleString()}$
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
-
-export default CarDetails;

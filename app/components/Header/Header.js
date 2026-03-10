@@ -18,16 +18,17 @@ function Header() {
                 <Link href={"/"}> Блог </Link>
               </li>
               <li className="hover:opacity-70 font-semibold transition">
-                <Link href={"/"}> О нас </Link>
+                <Link href={"/about"}> О нас </Link>
               </li>
-              <li className="hover:opacity-70 font-semibold transition">
-                <Link href={"/"}> Сервис </Link>
+             <li className="hover:opacity-70 font-semibold transition">
+                <Link href={"news"}> Новости </Link>
               </li>
             </ul>
+          
 
             {/* Markaz: Logo */}
             <div className="flex-shrink-0">
-              <Link href="/">
+              <Link href="/"> 
                 <Image
                   src={"/ddddd 1.svg"}
                   width={120}
@@ -68,9 +69,12 @@ function Header() {
               </button>
 
               {/* "Связаться с нами" tugmasi */}
-              <button className="border border-[#D4AF37] text-white px-6 py-2 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition-all duration-300 bg-transparent">
-                Связаться с нами
-              </button>
+              <Link 
+  href="/contact" 
+  className="border border-[#D4AF37] text-white px-6 py-2 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition-all duration-300 bg-transparent inline-block text-center"
+>
+  Связаться с нами
+</Link>
             </div>
           </div>
         </div>

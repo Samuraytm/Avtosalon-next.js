@@ -6,6 +6,7 @@ import Contacts from './components/Contacts/contacts';
 import Map from './components/Map/Map';
 import Image from 'next/image';
 import News from './components/News/NewsHome';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   // Массив для сетки брендов
