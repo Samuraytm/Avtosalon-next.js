@@ -15,13 +15,10 @@ function Header() {
                 <Link href={"/catalog"}> Модели </Link>
               </li>
               <li className="hover:opacity-70 font-semibold transition">
-                <Link href={"/"}> Блог </Link>
-              </li>
-              <li className="hover:opacity-70 font-semibold transition">
                 <Link href={"/about"}> О нас </Link>
               </li>
              <li className="hover:opacity-70 font-semibold transition">
-                <Link href={"news"}> Новости </Link>
+                <Link href={"/news"}> Новости </Link>
               </li>
             </ul>
           
