@@ -8,9 +8,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
         
         {/* Логотип по центру */}
-        <div className="mb-8">
-          <Image src="/logo.svg" alt="HADID" width={120} height={40} />
-        </div>
+        <div className="flex-shrink-0">
+              <Link href="/"> 
+                <Image
+                  src={"/ddddd 1.svg"}
+                  width={120}
+                  height={60}
+                  alt="HADID LOGO"
+                  className="object-contain"
+                />
+              </Link>
+            </div>
 
         {/* Навигация */}
         <nav className="flex flex-wrap justify-center gap-8 text-sm text-gray-400 uppercase tracking-widest">

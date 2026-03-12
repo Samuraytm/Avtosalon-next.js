@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { SectionTitle, SectionDesc } from '../UI/Typography';
 
 const newsHomeData = [
@@ -27,7 +28,8 @@ export default function NewsHome() {
           gap: '30px' 
         }}>
           {newsHomeData.map((item) => (
-            <div key={item.id} style={{ display: 'flex', flexDirection: 'column' }}>
+          <Link key={item.id} href={`/news/${item.id}`} >
+            <div  style={{ display: 'flex', flexDirection: 'column' }}>
               
               {/* 3. Фиксированная высота картинки */}
               <div style={{ 
@@ -40,7 +42,7 @@ export default function NewsHome() {
                   src={item.image} 
                   alt={item.title} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+                  />
               </div>
 
               <div className="flex justify-between items-center mb-4">
@@ -52,6 +54,7 @@ export default function NewsHome() {
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
               </p>
             </div>
+          </Link>
           ))}
         </div>
       </div>

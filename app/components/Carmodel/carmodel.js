@@ -80,10 +80,7 @@ const Carmodel = () => {
               <div className={`h-[2px] bg-yellow-600 transition-all ${selectedType === type ? "w-10" : "w-0"}`} />
             </button>
           ))}
-          {/* Неактивные пункты */}
-          {["Хэтчбек", "Универсалы", "Микро автобусы"].map(item => (
-            <p key={item} className="text-xl text-gray-800 cursor-default">{item}</p>
-          ))}
+         
         </div>
 
         {/* Кнопка внизу */}
